@@ -27,6 +27,7 @@ dependencies:
   device_preview: ^0.4.8
   flutter_svg: ^0.20.0-nullsafety.3
   cupertino_icons: ^1.0.2
+  keyboard_visibility: ^0.5.6
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   
