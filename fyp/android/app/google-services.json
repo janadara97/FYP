@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "569973654919",
+    "project_id": "petam-9735e",
+    "storage_bucket": "petam-9735e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569973654919:android:159e377ead85bc27183f22",
+        "android_client_info": {
+          "package_name": "com.example.fyp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569973654919-11p06qhm2cilbms5hbuj71td9si5jror.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLpd7WL7sh0qO5hbES0e3DXNFWlGflPwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569973654919-11p06qhm2cilbms5hbuj71td9si5jror.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
