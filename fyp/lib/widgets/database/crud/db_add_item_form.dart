@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fyp/pick_location_google_api.dart';
+
 import 'package:fyp/res/custom_colors.dart';
 import 'package:fyp/utils/database.dart';
 import 'package:fyp/utils/db_validator.dart';
@@ -113,7 +115,12 @@ SizedBox(height: 20,),
                   child: Text('Select date'),
                 ),
 
-
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>MapSearch()));
+                  },
+                  child: Text('Select date'),
+                ),
               //add date
                 Text(
                   'Location',
@@ -122,8 +129,15 @@ SizedBox(height: 20,),
                     fontSize: 22.0,
                     letterSpacing: 1,
                     fontWeight: FontWeight.bold,
+
+
+
+
                   ),
+
                 ),
+
+
 
                 Text(
                   'Cost true false',

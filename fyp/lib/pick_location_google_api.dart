@@ -18,8 +18,8 @@ class _MapSearchState extends State<MapSearch> {
 
   ///Get current location
   Geolocator geolocator = Geolocator();
-  String latitude = "";
-  String longitude = "";
+  double latitude;
+  double longitude;
   String address = "";
 
   String addressLocation;
@@ -123,19 +123,48 @@ class _MapSearchState extends State<MapSearch> {
                   //   addressLocation = firstAddress.addressLine;
                   // });
 
-                  Position position = await Geolocator.getCurrentPosition(
-                      desiredAccuracy: LocationAccuracy.best);
+                  // Position position = await Geolocator.getCurrentPosition(
+                  //     desiredAccuracy: LocationAccuracy.best);
+
+                  final coordinated = new geoCo.Coordinates(tapped.latitude, tapped.longitude);
+                  getMarker(tapped.latitude, tapped.longitude);
+                  var address = await geoCo.Geocoder.local.findAddressesFromCoordinates(coordinated);
+                  var firstAddress = address.first;
+
+                  print(tapped.latitude);
+                  print(tapped.longitude);
+
+
+                  Map<String,dynamic> data={"latitude": tapped.latitude,'logitude' : tapped.longitude,'address' : firstAddress.addressLine,'Country ' : firstAddress.countryName,'postalcode': firstAddress.postalCode };
+                  await FirebaseFirestore.instance.collection('location').add(data);
+                  setState(() {
+
+                    country=firstAddress.countryName;
+
+                    postalCode=firstAddress.postalCode;
+                    addressLocation=firstAddress.addressLine;
+                  });
+                  print(country);
+                  print(postalCode);
+                  print(addressLocation);
 
                   ///Here you have choose level of distance
-                  latitude = position.latitude.toString() ?? '';
-                  longitude = position.longitude.toString() ?? '';
-                  var placemarks = await placemarkFromCoordinates(
-                      position.latitude, position.longitude);
-                  address =
-                      '${placemarks.first.name.isNotEmpty ? placemarks.first.name + ', ' : ''}${placemarks.first.thoroughfare.isNotEmpty ? placemarks.first.thoroughfare + ', ' : ''}${placemarks.first.subLocality.isNotEmpty ? placemarks.first.subLocality + ', ' : ''}${placemarks.first.locality.isNotEmpty ? placemarks.first.locality + ', ' : ''}${placemarks.first.subAdministrativeArea.isNotEmpty ? placemarks.first.subAdministrativeArea + ', ' : ''}${placemarks.first.postalCode.isNotEmpty ? placemarks.first.postalCode + ', ' : ''}${placemarks.first.administrativeArea.isNotEmpty ? placemarks.first.administrativeArea : ''}';
-                  print("latitude" + latitude);
-                  print("longitude" + longitude);
-                  print("adreess" + address);
+                  ///latitude = position.latitude.toString() ?? '';
+                 // longitude = position.longitude;
+                  // latitude = position.latitude;
+                  // longitude = position.longitude.toString() ?? '';
+                  // var placemarks = await  placemarkFromCoordinates(
+                  //     position.latitude, position.longitude);
+
+                  // final coorinated=new geoCo.Coordinates(tapped.latitude, tapped.longitude);
+                  // print(coorinated);
+                  // var placemarks = await geoCo.Geocoder.local.findAddressesFromCoordinates(coorinated) ;
+                  // print("Place$placemarks");
+                  // address =
+                  //     '${placemarks.first.featureName.isNotEmpty ? placemarks.first.featureName + ', ' : ''}${placemarks.first.thoroughfare.isNotEmpty ? placemarks.first.thoroughfare + ', ' : ''}${placemarks.first.subLocality.isNotEmpty ? placemarks.first.subLocality + ', ' : ''}${placemarks.first.locality.isNotEmpty ? placemarks.first.locality + ', ' : ''}${placemarks.first.subAdminArea.isNotEmpty ? placemarks.first.subAdminArea + ', ' : ''}${placemarks.first.postalCode.isNotEmpty ? placemarks.first.postalCode + ', ' : ''}${placemarks.first.adminArea.isNotEmpty ? placemarks.first.adminArea : ''}';
+                  // print("latitude" + latitude.toString());
+                  // print("longitude" + longitude.toString());
+                  // print("adreess" + address);
                 },
               ),
             ),

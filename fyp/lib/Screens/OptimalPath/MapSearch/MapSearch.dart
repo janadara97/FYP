@@ -124,10 +124,13 @@ Map <MarkerId,Marker> markers =  <MarkerId,Marker>{};
                     Map<String,dynamic> data={"latitude": tapped.latitude,'logitude' : tapped.longitude,'address' : firstAddress.addressLine,'Country ' : firstAddress.countryName,'postalcode': firstAddress.postalCode };
                     await FirebaseFirestore.instance.collection('location').add(data);
                     setState(() {
+
                       country=firstAddress.countryName;
+
                       postalCode=firstAddress.postalCode;
                       addressLocation=firstAddress.addressLine;
                     });
+                    print(country);
                 },
           ),
               ),
