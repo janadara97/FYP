@@ -4,14 +4,14 @@ import 'package:fyp/Screens/Main/HomePage.dart';
 import 'package:fyp/Screens/OptimalPath/MapSearch/MapSearch.dart';
 
 import 'package:fyp/Screens/loginRegister.dart';
+import 'package:fyp/screenss/database/crud/db_login_screen.dart';
 
 
 
-Future <void> main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  return runApp(MyApp());
+void main() {
+  runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
      debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Nunito"),
-      home:HomePage(),
+      home:DbLoginScreen(),
     );
   }
 }

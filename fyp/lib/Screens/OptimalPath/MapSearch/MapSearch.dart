@@ -47,7 +47,7 @@ Map <MarkerId,Marker> markers =  <MarkerId,Marker>{};
   Widget build(BuildContext context) {
     return Scaffold(
 
-      //////////////////////App Bar
+      //////////////////////App Bar//////////////////
 
       appBar: AppBar(
         title: Text("Google Map"),
